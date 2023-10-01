@@ -1,4 +1,10 @@
 const nickname = "Timmy";
-const firstname = "Timothy";
+const firstName = "Timothy";
+const user = nickname || firstName; // If nickname is true, use that. Otherwise, use firstName.
 
-console.log("Good Morning, ${nickname} || {firstname}!");
+if (!nickname && !firstName) {
+  // If nickname and firstName are both falsy, just log this
+  console.log("Good Morning!");
+} else {
+  console.log(`Good morning, ${user}!`); // Otherwise, log this
+}
