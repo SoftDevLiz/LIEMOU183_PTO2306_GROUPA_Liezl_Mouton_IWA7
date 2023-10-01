@@ -10,10 +10,33 @@ const divider = "----------------------------------";
 
 // Only change below this line
 
-const owed = parseInt("R" + leoBalance + sarahBalance);
-const leo = '{leoName} + {leoSurname} + "Owed" + "R" + {sarahBalance}';
-const sarah = '{leoName} + {surname} + "Owed" + "R" + {sarahBalance}';
-const total = "Total amount owed: ";
-const result = leo + sarah + divider + divider + total + owed + divider;
+// Parse leoBalance and sarahBalance to float (decimal) values
+const leoBalanceToFloat = parseFloat(leoBalance);
+const sarahBalanceToFloat = parseFloat(sarahBalance);
 
-console.log(result);
+const leo = leoName + " " + leoSurname + `(Owed: R ${leoBalanceToFloat})`; // Log leo line
+
+const sarah =
+  sarahName + " " + sarahSurname + `     (Owed: R ${sarahBalanceToFloat})`; // Log sarah line
+
+const owed = leoBalanceToFloat + sarahBalanceToFloat; // Calculate the total amount
+
+const owedDecimals = owed.toFixed(2); // Make it so that the total amount shows the two decimals (cents)
+
+const total = `Total amount owed: R ${owedDecimals}`; // Log the total
+
+// Create the final result, including line breaks
+const result =
+  "\n" +
+  leo +
+  "\n" +
+  sarah +
+  "\n" +
+  "\n" +
+  divider +
+  "\n" +
+  total +
+  "\n" +
+  divider;
+
+console.log(result); // Logs the final result
